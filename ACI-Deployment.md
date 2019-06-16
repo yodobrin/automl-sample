@@ -32,7 +32,7 @@ print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
 ### Load the model
 list exsiting models
 
-![image.png](attachment:image.png)
+![load](https://user-images.githubusercontent.com/37622785/59563020-35b57500-903d-11e9-8e01-4fca79883999.png)
 
 
 ```python
@@ -49,7 +49,7 @@ the_model = Model.list(workspace=ws, name='nesher3')
 
 ### Creating an Image
 
-![image.png](attachment:image.png)
+![create](https://user-images.githubusercontent.com/37622785/59563019-2b937680-903d-11e9-9e11-1bc22f3f524a.png)
 
 
 ```python
@@ -93,7 +93,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 ### Deploy the webservice image to ACI
 
-![image.png](attachment:image.png)
+![deploy](https://user-images.githubusercontent.com/37622785/59563016-22a2a500-903d-11e9-81bb-6e381929ce24.png)
 
 
 ```python
