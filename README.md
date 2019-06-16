@@ -1,10 +1,20 @@
 
+## Auto ML
+### Use Azure Portal
+* Ensure subscription & azureml workspace exist
+* Each workspace is initilized with a configuration file named config.json, this file represent the details of the workspace and can be obtained from the workspace itself, it needs to be in the path to be picked up.
+* Create an auto-ml experiment, use the full csv file provided
+* the small csv file contains rows which do not exist within the bigger file
+* examine the csv file provided
+* ensure to use 'classification' and point to the attrition column
+* create compute or leverage existing compute
+* once the experiment ends, register the model, and download the scoring file and conda env yml file
+
 ## Using model & or Image
 
 ### Prerequisites & Initialize Workspace
 
 * You need to use Python 3.6 - AzureML kernel or one that supports the same dependencies
-* Each workspace is initilized with a configuration file named config.json, this file represent the details of the workspace and can be obtained from the workspace itself, it needs to be in the path to be picked up.
 * This sample notebook does not specifiy exactly the name of the model or the image to be used - make sure to keep track on the one you use.
 * Per experiment, a scoring file and conda env yaml file are avilable from the portal, note that during testing or validation of the exposed web-service you would need to pass the exact params in the exact order (if the auto generated file is used).
 
