@@ -44,7 +44,7 @@ for m in models:
 
 
 ```python
-the_model = Model.list(workspace=ws, name='nesher3')
+the_model = Model.list(workspace=ws, name='<model-name>')
 ```
 
 ### Creating an Image
@@ -57,10 +57,10 @@ from azureml.core.image import Image, ContainerImage
 image_config = ContainerImage.image_configuration(runtime= "python",
                                  execution_script="scoring.py",
                                  conda_file="condaEnv.yml",
-                                 tags = {'area': "attrition", 'type': "classification"},
-                                 description = "Image with employee attrition classification model")
+                                 tags = {'area': "<area>", 'type': "<classification>"},
+                                 description = "<some descriptive info>")
 
-image = Image.create(name = "ibmattr2",
+image = Image.create(name = "<image-name>",
                      # this is the model object. note you can pass in 0-n models via this list-type parameter
                      # in case you need to reference multiple models, or none at all, in your scoring script.
                      models = the_model,
@@ -76,7 +76,7 @@ image.wait_for_creation(show_output = True)
 
 ```python
 from azureml.core.image import Image, ContainerImage
-image  = Image(ws, name='nesher31')
+image  = Image(ws, name='<pre-created-image-name>')
 ```
 
 ### Configure WevService deployment
@@ -87,8 +87,8 @@ from azureml.core.webservice import AciWebservice
 
 aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1, 
                                                memory_gb = 1, 
-                                               tags = {'area': "nesher", 'type': "classification"}, 
-                                               description = 'Predict soldier nesher model')
+                                               tags = {'area': "<area-description>", 'type': "<classification>"}, 
+                                               description = '<your description>')
 ```
 
 ### Deploy the webservice image to ACI
@@ -99,7 +99,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 ```python
 from azureml.core.webservice import Webservice
 
-aci_service_name = 'my-aci-service-2'
+aci_service_name = '<web-service-name>'
 print(aci_service_name)
 aci_service = Webservice.deploy_from_image(deployment_config = aciconfig,
                                            image = image,
@@ -135,7 +135,7 @@ import json
 #
 # 
 test_sample = json.dumps({'data': [
-    [1/8/2015,0,28,19,24,20,50,3,2,2,3,3,3,3,53,12,22,6,1,0.293700138,0,1,0,0,2,4,4,3,5,3,1,1,1,2,1,2,2,3,5,5,1.441340002,8,0,1,0,2015,3,8,0,3,3,1,5,0,4]
+    [56,'Travel_Rarely',310,'Research & Development',7,2,'Technical Degree',1,2032,4,'Male',72,3,1,'Laboratory Technician',3,'Married',2339,3666,8,'Y','No',11,3,4,80,1,14,4,1,10,9,9,8]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
 
@@ -151,6 +151,3 @@ aci_service.delete()
 ```
 
 
-```python
-'\x06|\xac\x1a\xb2Y\x03WE \xc8\xa3\xb0\xa5a\xfb',"b""\xb5XA\x84'y\x85l\xb7F\xe1\xd3o\x8c\xd5[""",'\xaas`\xcf\x14\xd5b\x8e\xe4\x0e\xeft7\xa9:Y','1/11/2015',0,24.0,14.0,19.0,10.0,50.0,3.0,3.0,2.0,3.0,3.0,3.0,3.0,49.0,12.0,23.0,6.0,1,0.0,0,0,0.0,0,0,0,5,1,0,0,1,0,0,0,1,0,0,0,0,5,5,1.876857836,0.0,1,1,0,0,2015
-```
