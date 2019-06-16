@@ -10,7 +10,7 @@
 
 * The experiment starts with the portal
 
-![image.png](attachment:image.png)
+![image.png](https://user-images.githubusercontent.com/37622785/59563022-3c43ec80-903d-11e9-8877-a8e8257697b6.png)
 
 
 ```python
